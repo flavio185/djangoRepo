@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+	<h1>{{ roupas.count|title }} Peças</h1>
+	<form method="GET" action=''>
+		<p><input type='text' name='q' placeholder="Pesquisar roupas"/>
+		<input type='submit' value="Pesquisar" /></p>
+	</form>
+	<table id="pecasTable">
+		<thead>
+			<th onclick="w3.sortHTML('#"pecasTable"', '.item', 'td:nth-child(1)')" style="cursor:pointer">Nome</th>
+			<th onclick="w3.sortHTML('#"pecasTable"', '.item', 'td:nth-child(2)')" style="cursor:pointer">Tipo</th>
+			<th onclick="w3.sortHTML('#"pecasTable"', '.item', 'td:nth-child(3)')" style="cursor:pointer">Preço</th>
+			<th onclick="w3.sortHTML('#"pecasTable"', '.item', 'td:nth-child(4)')" style="cursor:pointer">Codigo</th>
+		</thead>
+<br>
+		<tbody>
+			{% for peca in roupas %}
+				<tr class="item">
+					<td>
+
+						{% ifequal peca.imagem None %}
+							<img src="DEFAULT_IMAGE" />
+						{% else %}
+							<a href="{% url 'loja:view-peca' peca.pk %}">
+							<img src="{{ peca.image_url }}" width="240">
+						{% endifequal %}
+					</td>
+					<td class="title">
+						<a href="{% url 'loja:view-peca' peca.pk %}">
+						{{ peca.nome }}
+						</a>
+					</td>
+					<td>
+						{{ peca.tipo }}
+					</td>
+					<td class="align-right">
+						{{ peca.valor_venda }}
+					</td>
+					<td class="align-right">
+						{{ peca.codigo }}
+					</td>
+					<td class="align-right">
+						{{ peca.data_inclusao }}
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+{% endblock %}
+

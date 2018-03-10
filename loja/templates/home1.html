@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<title>W3.JS</title>
+
+<body>
+<main>
+<script src="https://www.w3schools.com/lib/w3.js"></script>
+<h2>Sort Tables</h2>
+
+<p>Click the table headers to sort the  table accordingly:</p>
+
+<table id="myTable">
+  <tr>
+    <th onclick="w3.sortHTML('#myTable', '.item', 'td:nth-child(1)')" style="cursor:pointer">Name</th>
+    <th onclick="w3.sortHTML('#myTable', '.item', 'td:nth-child(2)')" style="cursor:pointer">Country</th>
+  </tr>
+  <tr class="item">
+    <td>Berglunds snabbkop</td>
+    <td>Sweden</td>
+  </tr>
+  <tr class="item">
+    <td>North/South</td>
+    <td>UK</td>
+  </tr>
+  <tr class="item">
+    <td>Alfreds Futterkiste</td>
+    <td>Germany</td>
+  </tr>
+  <tr class="item">
+    <td>Koniglich Essen</td>
+    <td>Germany</td>
+  </tr>
+  <tr class="item">
+    <td>Magazzini Alimentari Riuniti</td>
+    <td>Italy</td>
+  </tr>
+  <tr class="item">
+    <td>Paris specialites</td>
+    <td>France</td>
+  </tr>
+  <tr class="item">
+    <td>Island Trading</td>
+    <td>UK</td>
+  </tr>
+  <tr class="item">
+    <td>Laughing Bacchus Winecellars</td>
+    <td>Canada</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>
+

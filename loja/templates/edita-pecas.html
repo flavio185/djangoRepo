@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<h1>{{ peca.nome }}</h1>
+	<form method="post" enctype="multipart/form-data">
+		{% csrf_token %}
+		{% if form.non_field_errors %}
+			<div class="non-field-errors">
+				{% for error in form.non_field_errors %}
+					<span>{{ error }}</span>
+				{% endfor %}
+			</div>
+		{% endif %}
+
+		<p>
+		<label>{{ form.codigo.label }}</label>
+		{{ form.codigo }}
+		{% if form.codigo.errors %}
+			<div class="form-error">
+				{% for error in form.codigo.errors %}
+					<span>{{ error }}</span>
+				{% endfor %}
+			</div>
+		{% endif %}
+		</p>
+		<p>
+		<label>{{ form.nome.label }}</label>
+		{{ form.nome }}
+
+		{% if form.nome.errors %}
+			<div class="form-error">
+				{% for error in form.nome.errors %}
+					<span>{{ error }}</span>
+				{% endfor %}
+			</div>
+		{% endif %}
+		</p>
+		<p>
+		<label>{{ form.tipo.label }}</label>
+		{{ form.tipo }}
+		{% if form.nome.errors %}
+			<div class="form-error">
+				{% for error in form.nome.errors %}
+					<span>{{ error }}</span>
+				{% endfor %}
+			</div>
+		{% endif %}
+		</p>
+		<p>
+		<label>{{ form.genero.label }}</label>
+		{{ form.genero }}
+		{% if form.genero.errors %}
+			<div class="form-error">
+				{% for error in form.genero.errors %}
+					<span>{{ error }}</span>
+				{% endfor %}
+			</div>
+		{% endif %}
+		</p>
+		<p>
+		<label>{{ form.tamanho.label }}</label>
+		{{ form.tamanho }}
+		{% if form.tamanho.errors %}
+			<div class="form-error">
+				{% for error in form.tamanho.errors %}
+					<span>{{ error }}</span>
+				{% endfor %}
+			</div>
+		{% endif %}
+		</p>
+		<p>
+		<label>{{ form.valor_pago.label }}</label>
+		{{ form.valor_pago }}
+		{% if form.valor_pago.errors %}
+			<div class="form-error">
+				{% for error in form.valor_pago.errors %}
+					<span>{{ error }}</span>
+				{% endfor %}
+			</div>
+		{% endif %}
+		</p>
+		<p>
+		<label>{{ form.valor_venda.label }}</label>
+		{{ form.valor_venda }}
+		{% if form.valor_venda.errors %}
+			<div class="form-error">
+				{% for error in form.valor_venda.errors %}
+					<span>{{ error }}</span>
+				{% endfor %}
+			</div>
+		{% endif %}
+		</p>
+		<p>
+		<label>{{ form.estoque.label }}</label>
+		{{ form.estoque }}
+		{% if form.estoque.errors %}
+			<div class="form-error">
+				{% for error in form.estoque.errors %}
+					<span>{{ error }}</span>
+				{% endfor %}
+			</div>
+		{% endif %}
+		</p>
+		<p>
+		<label>{{ form.imagem.label }}</label>
+		{{ form.imagem }}
+		{% if form.imagem.errors %}
+			<div class="form-error">
+				{% for error in form.imagem.errors %}
+					<span>{{ error }}</span>
+				{% endfor %}
+			</div>
+		{% endif %}
+		</p>
+		<p>
+		<label>{{ form.imagem1.label }}</label>
+		{{ form.imagem1 }}
+		{% if form.imagem1.errors %}
+			<div class="form-error">
+				{% for error in form.imagem1.errors %}
+					<span>{{ error }}</span>
+				{% endfor %}
+			</div>
+		{% endif %}
+		</p>
+		<p>
+		<label>{{ form.imagem2.label }}</label>
+		{{ form.imagem2 }}
+		{% if form.imagem2.errors %}
+			<div class="form-error">
+				{% for error in form.imagem2.errors %}
+					<span>{{ error }}</span>
+				{% endfor %}
+			</div>
+		{% endif %}
+		</p>
+			<img src="{{ peca.image_url }}" width="240">
+			<img src="{{ peca.image1_url }}" width="240">
+			<img src="{{ peca.image2_url }}" width="240">
+
+			<p></p>
+
+		<input type="submit" value="Salvar">
+	</form>
+{% endblock %}

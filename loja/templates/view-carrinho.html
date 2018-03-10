@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+<script src="https://www.w3schools.com/lib/w3.js"></script>
+
+	<h1>{{ roupas.count|title }} Peças</h1>
+    <h2>{{ request.session.cart }}</h2>
+
+{% endblock %}

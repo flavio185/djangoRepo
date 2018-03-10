@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block content %}
+<script src="https://www.w3schools.com/lib/w3.js"></script>
+
+	<h1>{{ roupas.count|title }} Peças</h1>
+    <h2>{{ request.session.cart }}</h2>
+	<form method="GET" action=''>
+		<p><input type='text' name='q' placeholder="Pesquisar roupas"/>
+		<input type='submit' value="Pesquisar" /></p>
+	</form>
+	<table id="pecasTable">
+		<thead>
+            <th onclick="w3.sortHTML('#pecasTable', '.item', 'td:nth-child(1)')" style="cursor:pointer">Foto</th>
+            <th onclick="w3.sortHTML('#pecasTable', '.item', 'td:nth-child(2)')" style="cursor:pointer">Codigo</th>
+            <th onclick="w3.sortHTML('#pecasTable', '.item', 'td:nth-child(3)')" style="cursor:pointer">Nome</th>
+            <th onclick="w3.sortHTML('#pecasTable', '.item', 'td:nth-child(4)')" style="cursor:pointer">Tamanho</th>
+            <th onclick="w3.sortHTML('#pecasTable', '.item', 'td:nth-child(5)')" style="cursor:pointer">Genero</th>
+            <th onclick="w3.sortHTML('#pecasTable', '.item', 'td:nth-child(6)')" style="cursor:pointer">Tipo</th>
+            <th onclick="w3.sortHTML('#pecasTable', '.item', 'td:nth-child(7)')" style="cursor:pointer">Valor Compra</th>
+            <th onclick="w3.sortHTML('#pecasTable', '.item', 'td:nth-child(8)')" style="cursor:pointer">Valor Venda</th>
+            <th onclick="w3.sortHTML('#pecasTable', '.item', 'td:nth-child(9)')" style="cursor:pointer">Estoque</th>
+		</thead>
+		<tbody>
+			{% for peca in roupas %}
+                
+				<tr class="item">
+					<td>
+						{% ifequal peca.imagem None %}
+							<img src="DEFAULT_IMAGE" />
+						{% else %}
+							<a href="{{ peca.image_url }}"><img src="{{ peca.image_url }}" width="240"></a>
+						{% endifequal %}
+					</td>
+                    <td>
+                        {{ peca.codigo }}
+                    </td>
+					<td>
+						<a href="{% url 'loja:view-peca' peca.pk %}">
+						{{ peca.nome }}
+						</a>
+					</td>
+                    <td>
+                        {{ peca.tamanho }}
+                    </td>
+                    <td>
+                        {{ peca.genero}}
+                    </td>
+					<td>
+						{{ peca.tipo }}
+					</td>
+                    <td>
+                        {{ peca.valor_pago}}
+                    </td>
+					<td>
+						{{ peca.valor_venda }}
+					</td>
+					<td>
+						{{ peca.estoque}}
+					</td>
+					<td>
+                        <form method="post" action='/loja/carrinho'>
+                            {% csrf_token %}
+                            <p><input type='text' name='quantidade' id='quantidade'/>
+                            <input type='submit' value="Adicionar ao carrinho" /></p>
+                        </form>
+                    </td>
+				</tr>
+                
+            {% endfor %}
+		</tbody>
+	</table>
+
+{% endblock %}
+
